@@ -37,37 +37,41 @@ console.log(lang)
 console.log(localStorage.getItem('lang'))
 
 function keys_core() {
+    for (let ks in keys_en) {
+        if (ks[0] === '+' && ks.length === 2) {
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
+        } else if (ks === 'ShiftL' || ks === 'ShiftR') {
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
+        } else if (ks === 'Space') {
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
+        } else if (ks === 'rAlt') {
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Alt</div>`)
+        } else if (ks === 'rCtrl') {
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Ctrl</div>`)
+        } else {
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
+        }
+    }
+    
     if (lang === 'en') {
+        let i = 0
         for (let ks in keys_en) {
-            if (ks[0] === '+' && ks.length === 2) {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
-            } else if (ks === 'ShiftL' || ks === 'ShiftR') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
-            } else if (ks === 'Space') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
-            } else if (ks === 'rAlt') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Alt</div>`)
-            } else if (ks === 'rCtrl') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Ctrl</div>`)
-            } else {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
-            }
+                // wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
+                if (ks[0] !== '+' && ks.length !== 2 && ks !== 'ShiftL' && ks !== 'ShiftR' && ks !== 'Space' && ks !== 'rAlt' && ks !== 'rCtrl') {
+                    wrapper.childNodes[i].innerHTML = `${ks}`
+                }
+                
+            i++
         }
     } else if (lang === 'ru') {
+        let i = 0
         for (let ks in keys_ru) {
-            if (ks[0] === '+' && ks.length === 2) {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
-            } else if (ks === 'ShiftL' || ks === 'ShiftR') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
-            } else if (ks === 'Space') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
-            } else if (ks === 'rAlt') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Alt</div>`)
-            } else if (ks === 'rCtrl') {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Ctrl</div>`)
-            } else {
-                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
-            }
+                // wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
+                if (ks[0] !== '+' && ks.length !== 2 && ks !== 'ShiftL' && ks !== 'ShiftR' && ks !== 'Space' && ks !== 'rAlt' && ks !== 'rCtrl') {
+                    wrapper.childNodes[i].innerHTML = `${ks}`
+                }
+                
+            i++
         }
     }
 }
