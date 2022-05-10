@@ -1,4 +1,5 @@
-import keys_en from '../keys.js';
+import keys_en from '../keys_en.js';
+import keys_ru from '../keys_ru.js';
 
 /////////adding html structure//////////
 
@@ -10,8 +11,8 @@ body.insertAdjacentHTML('beforeend', `<div class="wrapper"></div>`)
 body.insertAdjacentHTML('beforeend', `<footer>
 <a href="https://github.com/PaHaNchickT" target="blank" tabindex="-1">GitHub</a>
 <div>
-    <p>Press Ctrl+Alt for swap language</p>
-    <p>Made on Windows</p>
+    <p>Press Shift+Alt for swap language</p>
+    <p>Made on OS Windows</p>
 </div>
 <a href="https://rs.school/index.html" target="blank" tabindex="-1">RSSchool 2022</a>
 </footer>`)
@@ -22,9 +23,17 @@ const wrapper = document.querySelector('.wrapper')
 const area = document.querySelector('textarea')
 area.focus()
 let isCaps = 0
+let lang
+
+if (lang === 0 || lang === undefined) {
+    lang = 'en'
+} else {
+    lang = localStorage.getItem('lang')
+}
+
+console.log(lang)
 
 function keys_en_core() {
-    // delete_nahuy_all()
     for (let ks in keys_en) {
         if (ks[0] === '+' && ks.length === 2) {
             wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
@@ -275,7 +284,7 @@ body.addEventListener('keydown', function (event) {
     } else if (event.code === 'Slash') {
         wrapper.childNodes[52].style.backgroundColor = 'yellow'
     }
-    console.log(event.code)
+    // console.log(event.code)
 })
 
 body.addEventListener('keyup', function (event) {
@@ -348,7 +357,7 @@ body.addEventListener('keyup', function (event) {
     } else if (event.code === 'Slash') {
         wrapper.childNodes[52].style.backgroundColor = 'black'
     }
-    console.log(event.code)
+    // console.log(event.code)
 })
 
 wrapper.querySelectorAll('.key').forEach(e => {
@@ -361,4 +370,40 @@ wrapper.querySelectorAll('.key').forEach(e => {
     e.addEventListener('mouseout', function() {
         e.style.backgroundColor = 'black'
     })
+})
+
+//////////swap language//////////
+
+let swap = []
+
+// function keys_ru_swapping() {
+//     wrapper.childNodes.forEach(e => {
+//         for (let keys in keys_ru) {
+//             if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
+//                 e.textContent = keys_en[keys]
+//             }
+//         }
+//     })
+// }
+
+body.addEventListener('keydown', function(event) {
+    swap.push(event.code)
+    console.log(swap)
+    // if (event.code.slice(0, 5) === 'Shift' && event.code.slice(0, 3) === 'Alt') {
+    //     console.log('YES')
+    // }
+})
+
+body.addEventListener('keyup', function() {
+    if (swap.length === 0 || swap.length === 1) {
+        return
+    } else if ((swap[0].slice(0, 5) === 'Shift' && swap[1].slice(0, 3) === 'Alt') || (swap[1].slice(0, 5) === 'Shift' && swap[0].slice(0, 3) === 'Alt')) {
+        if (lang === 'ru') {
+            lang = 'en'
+        } else {
+            lang = 'ru'
+        }
+        console.log(lang)
+    }
+    swap.length = 0
 })
