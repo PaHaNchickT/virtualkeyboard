@@ -233,7 +233,7 @@ body.addEventListener('keydown', function (event) {
         keys_en_shift()
         shift[1].style.backgroundColor = 'yellow'
     } else if (event.code === 'ControlLeft') {
-        ctrlL.style.backgroundColor = 'yellow'
+        wrapper.childNodes[55].style.backgroundColor = 'yellow'
     } else if (event.code === 'AltLeft') {
         event.preventDefault()
         altL.style.backgroundColor = 'yellow'
@@ -306,7 +306,7 @@ body.addEventListener('keyup', function (event) {
         keys_en_unshift()
         shift[1].style.backgroundColor = 'black'
     } else if (event.code === 'ControlLeft') {
-        ctrlL.style.backgroundColor = 'black'
+        wrapper.childNodes[55].style.backgroundColor = 'black'
     } else if (event.code === 'AltLeft') {
         event.preventDefault()
         altL.style.backgroundColor = 'black'
