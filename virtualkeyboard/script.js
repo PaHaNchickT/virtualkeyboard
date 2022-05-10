@@ -8,12 +8,12 @@ body.insertAdjacentHTML('beforeend', `<header>Virtual Keyboard</header>`)
 body.insertAdjacentHTML('beforeend', `<textarea name="field" id="field" cols="50" rows="7"></textarea>`)
 body.insertAdjacentHTML('beforeend', `<div class="wrapper"></div>`)
 body.insertAdjacentHTML('beforeend', `<footer>
-<a href="https://github.com/PaHaNchickT" target="blank">GitHub</a>
+<a href="https://github.com/PaHaNchickT" target="blank" tabindex="-1">GitHub</a>
 <div>
     <p>Press Ctrl+Alt for swap language</p>
     <p>Made on Windows</p>
 </div>
-<a href="https://rs.school/index.html" target="blank">RSSchool 2022</a>
+<a href="https://rs.school/index.html" target="blank" tabindex="-1">RSSchool 2022</a>
 </footer>`)
 
 //////////core functions//////////
@@ -27,7 +27,7 @@ function keys_en_core() {
     // delete_nahuy_all()
     for (let ks in keys_en) {
         if (ks[0] === '+' && ks.length === 2) {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks[1]}'>${ks[1]}</div>`)
+            wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
         } else if (ks === 'ShiftL' || ks === 'ShiftR') {
             wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
         } else if (ks === 'Space') {
@@ -170,13 +170,15 @@ del.onclick = delNext
 
 //////////TAB AND ENTER//////////
 
-tab.onclick = function () {
+function tabulation() {
     let pos = area.selectionStart
     area.value = `${area.value}\t`
     area.focus()
     area.selectionStart = pos + 1
     area.selectionEnd = pos + 1
 }
+
+tab.onclick = tabulation
 
 enter.onclick = function () {
     let pos = area.selectionStart
@@ -197,19 +199,33 @@ body.addEventListener('keydown', function (event) {
             wrapper.querySelector(`.${event.code[3]}`).style.backgroundColor = 'yellow'
         }
     } else if (event.code.slice(0, 3) === 'Dig') {
-        // wrapper.querySelector(`.${event.code[5].toString()}`).style.backgroundColor = 'yellow'
-        console.log(wrapper.querySelector('.1'))
-    }
-    if (event.code === 'Backspace') {
+        wrapper.querySelector(`.n${event.code[5]}`).style.backgroundColor = 'yellow'
+    } else if (event.code === 'Backspace') {
         backspace.style.backgroundColor = 'yellow'
-
+    } else if (event.code === 'Tab') {
+        tabulation()
+        tab.style.backgroundColor = 'yellow'
+        event.preventDefault()
     }
     console.log(event.code)
 })
 
-// body.addEventListener('keyup', function (event) {
-//     if (event.code === 'Backspace') {
-//         backspace.style.backgroundColor = 'black'
-//     }
-//     console.log(event.code)
-// })
+body.addEventListener('keyup', function (event) {
+    area.focus()
+    if (event.code.slice(0, 3) === 'Key') {
+        if (wrapper.querySelector(`.${event.code[3]}`) === null) {
+            wrapper.querySelector(`.${event.code[3].toLowerCase()}`).style.backgroundColor = 'black'
+        } else {
+            wrapper.querySelector(`.${event.code[3]}`).style.backgroundColor = 'black'
+        }
+    } else if (event.code.slice(0, 3) === 'Dig') {
+        wrapper.querySelector(`.n${event.code[5]}`).style.backgroundColor = 'black'
+    } else if (event.code === 'Backspace') {
+        backspace.style.backgroundColor = 'black'
+    } else if (event.code === 'Tab') {
+        tabulation()
+        tab.style.backgroundColor = 'black'
+        event.preventDefault()
+    }
+    console.log(event.code)
+})
