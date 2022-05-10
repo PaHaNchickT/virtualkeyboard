@@ -67,6 +67,15 @@ const backspace = document.querySelector('.Backspace')
 const del = document.querySelector('.Del')
 const tab = document.querySelector('.Tab')
 const enter = document.querySelector('.Enter')
+const ctrlL = document.querySelector('.Ctrl')
+const ctrlR = document.querySelector('.rCtrl')
+const altL = document.querySelector('.Alt')
+const altR = document.querySelector('.rAlt')
+const space = document.querySelector('.Space')
+const arrup = document.querySelector('.▲')
+const arrleft = document.querySelector('.◄')
+const arrdown = document.querySelector('.▼')
+const arrright = document.querySelector('.►')
 
 //////////SHIFT//////////
 
@@ -206,6 +215,58 @@ body.addEventListener('keydown', function (event) {
         tabulation()
         tab.style.backgroundColor = 'yellow'
         event.preventDefault()
+    } else if (event.code === 'Delete') {
+        del.style.backgroundColor = 'yellow'
+    } else if (event.code === 'Enter') {
+        enter.style.backgroundColor = 'yellow'
+    } else if (event.code === 'CapsLock') {
+        capslock.style.backgroundColor = 'yellow'
+    } else if (event.code === 'ShiftLeft') {
+        shift[0].style.backgroundColor = 'yellow'
+    } else if (event.code === 'ShiftRight') {
+        shift[1].style.backgroundColor = 'yellow'
+    } else if (event.code === 'ControlLeft') {
+        ctrlL.style.backgroundColor = 'yellow'
+    } else if (event.code === 'AltLeft') {
+        event.preventDefault()
+        altL.style.backgroundColor = 'yellow'
+    } else if (event.code === 'Space') {
+        space.style.backgroundColor = 'yellow'
+    } else if (event.code === 'AltRight') {
+        event.preventDefault()
+        altR.style.backgroundColor = 'yellow'
+    } else if (event.code === 'ControlRight') {
+        ctrlR.style.backgroundColor = 'yellow'
+    } else if (event.code === 'ArrowUp') {
+        arrup.style.backgroundColor = 'yellow'
+    } else if (event.code === 'ArrowDown') {
+        arrdown.style.backgroundColor = 'yellow'
+    } else if (event.code === 'ArrowLeft') {
+        arrleft.style.backgroundColor = 'yellow'
+    } else if (event.code === 'ArrowRight') {
+        arrright.style.backgroundColor = 'yellow'
+    } else if (event.code === 'Backquote') {
+        wrapper.childNodes[0].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Minus') {
+        wrapper.childNodes[11].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Equal') {
+        wrapper.childNodes[12].style.backgroundColor = 'yellow'
+    } else if (event.code === 'BracketLeft') {
+        wrapper.childNodes[25].style.backgroundColor = 'yellow'
+    } else if (event.code === 'BracketRight') {
+        wrapper.childNodes[26].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Backslash') {
+        wrapper.childNodes[27].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Semicolon') {
+        wrapper.childNodes[39].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Quote') {
+        wrapper.childNodes[40].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Comma') {
+        wrapper.childNodes[50].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Period') {
+        wrapper.childNodes[51].style.backgroundColor = 'yellow'
+    } else if (event.code === 'Slash') {
+        wrapper.childNodes[52].style.backgroundColor = 'yellow'
     }
     console.log(event.code)
 })
@@ -223,9 +284,60 @@ body.addEventListener('keyup', function (event) {
     } else if (event.code === 'Backspace') {
         backspace.style.backgroundColor = 'black'
     } else if (event.code === 'Tab') {
-        tabulation()
         tab.style.backgroundColor = 'black'
         event.preventDefault()
+    } else if (event.code === 'Delete') {
+        del.style.backgroundColor = 'black'
+    } else if (event.code === 'Enter') {
+        enter.style.backgroundColor = 'black'
+    } else if (event.code === 'CapsLock') {
+        capslock.style.backgroundColor = 'black'
+    } else if (event.code === 'ShiftLeft') {
+        shift[0].style.backgroundColor = 'black'
+    } else if (event.code === 'ShiftRight') {
+        shift[1].style.backgroundColor = 'black'
+    } else if (event.code === 'ControlLeft') {
+        ctrlL.style.backgroundColor = 'black'
+    } else if (event.code === 'AltLeft') {
+        event.preventDefault()
+        altL.style.backgroundColor = 'black'
+    } else if (event.code === 'Space') {
+        space.style.backgroundColor = 'black'
+    } else if (event.code === 'AltRight') {
+        event.preventDefault()
+        altR.style.backgroundColor = 'black'
+    } else if (event.code === 'ControlRight') {
+        ctrlR.style.backgroundColor = 'black'
+    } else if (event.code === 'ArrowUp') {
+        arrup.style.backgroundColor = 'black'
+    } else if (event.code === 'ArrowDown') {
+        arrdown.style.backgroundColor = 'black'
+    } else if (event.code === 'ArrowLeft') {
+        arrleft.style.backgroundColor = 'black'
+    } else if (event.code === 'ArrowRight') {
+        arrright.style.backgroundColor = 'black'
+    } else if (event.code === 'Backquote') {
+        wrapper.childNodes[0].style.backgroundColor = 'black'
+    } else if (event.code === 'Minus') {
+        wrapper.childNodes[11].style.backgroundColor = 'black'
+    } else if (event.code === 'Equal') {
+        wrapper.childNodes[12].style.backgroundColor = 'black'
+    } else if (event.code === 'BracketLeft') {
+        wrapper.childNodes[25].style.backgroundColor = 'black'
+    } else if (event.code === 'BracketRight') {
+        wrapper.childNodes[26].style.backgroundColor = 'black'
+    } else if (event.code === 'Backslash') {
+        wrapper.childNodes[27].style.backgroundColor = 'black'
+    } else if (event.code === 'Semicolon') {
+        wrapper.childNodes[39].style.backgroundColor = 'black'
+    } else if (event.code === 'Quote') {
+        wrapper.childNodes[40].style.backgroundColor = 'black'
+    } else if (event.code === 'Comma') {
+        wrapper.childNodes[50].style.backgroundColor = 'black'
+    } else if (event.code === 'Period') {
+        wrapper.childNodes[51].style.backgroundColor = 'black'
+    } else if (event.code === 'Slash') {
+        wrapper.childNodes[52].style.backgroundColor = 'black'
     }
     console.log(event.code)
 })
