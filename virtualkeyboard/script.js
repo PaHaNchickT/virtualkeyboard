@@ -1,4 +1,4 @@
-import keys_en from '/keys.js';
+import keys_en from '../keys.js';
 
 /////////adding html structure//////////
 
