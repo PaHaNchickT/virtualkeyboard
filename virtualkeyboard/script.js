@@ -89,25 +89,47 @@ const arrright = document.querySelector('.►')
 //////////SHIFT//////////
 
 function keys_en_shift() {
-    wrapper.childNodes.forEach(e => {
-        for (let keys in keys_en) {
-            if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
-                e.textContent = keys_en[keys]
+    if (lang === 'en') {
+        wrapper.childNodes.forEach(e => {
+            for (let keys in keys_en) {
+                if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
+                    e.textContent = keys_en[keys]
+                }
             }
+        })
+    } else {
+        let i = 0
+        for (let keys in keys_ru) {
+            if (keys_en[keys] !== 'special') {
+                wrapper.childNodes[i].textContent = keys_ru[keys]
+            }
+            i++
         }
-    })
+    }
 }
 
 function keys_en_unshift() {
-    wrapper.childNodes.forEach(e => {
-        for (let keys in keys_en) {
-            if (keys[0] === '+' && keys.length === 2 && keys_en[keys] === e.textContent) {
-                e.textContent = keys[1]
-            } else if (keys_en[keys] === e.textContent) {
-                e.textContent = keys
+    if (lang === 'en') {
+        wrapper.childNodes.forEach(e => {
+            for (let keys in keys_en) {
+                if (keys[0] === '+' && keys.length === 2 && keys_en[keys] === e.textContent) {
+                    e.textContent = keys[1]
+                } else if (keys_en[keys] === e.textContent) {
+                    e.textContent = keys
+                }
             }
+        })
+    } else {
+        let i = 0
+        for (let keys in keys_ru) {
+            if (keys[0] === '+' && keys.length === 2) {
+                wrapper.childNodes[i].textContent = keys[1]
+            } else if (keys.length === 1) {
+                wrapper.childNodes[i].textContent = keys
+            }
+            i++
         }
-    })
+    }
 }
 
 shift.forEach(e => {
@@ -124,9 +146,17 @@ shift.forEach(e => {
 
 function caps_up() {
     wrapper.childNodes.forEach(e => {
-        for (let keys in keys_en) {
-            if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
-                e.textContent = e.textContent.toUpperCase()
+        if (lang === 'en') {
+            for (let keys in keys_en) {
+                if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
+                    e.textContent = e.textContent.toUpperCase()
+                }
+            }
+        } else {
+            for (let keys in keys_ru) {
+                if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
+                    e.textContent = e.textContent.toUpperCase()
+                }
             }
         }
     })
@@ -135,9 +165,17 @@ function caps_up() {
 
 function caps_down() {
     wrapper.childNodes.forEach(e => {
-        for (let keys in keys_en) {
-            if ((keys.toUpperCase() === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
-                e.textContent = e.textContent.toLowerCase()
+        if (lang === 'en') {
+            for (let keys in keys_en) {
+                if ((keys.toUpperCase() === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
+                    e.textContent = e.textContent.toLowerCase()
+                }
+            }
+        } else {
+            for (let keys in keys_ru) {
+                if ((keys.toUpperCase() === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
+                    e.textContent = e.textContent.toLowerCase()
+                }
             }
         }
     })
@@ -361,13 +399,13 @@ body.addEventListener('keyup', function (event) {
 })
 
 wrapper.querySelectorAll('.key').forEach(e => {
-    e.addEventListener('mouseover', function() {
+    e.addEventListener('mouseover', function () {
         e.style.backgroundColor = 'yellow'
     })
 })
 
 wrapper.querySelectorAll('.key').forEach(e => {
-    e.addEventListener('mouseout', function() {
+    e.addEventListener('mouseout', function () {
         e.style.backgroundColor = 'black'
     })
 })
@@ -396,12 +434,11 @@ function keys_en_swapping() {
     }
 }
 
-body.addEventListener('keydown', function(event) {
+body.addEventListener('keydown', function (event) {
     swap.push(event.code)
-    console.log(swap)
 })
 
-body.addEventListener('keyup', function() {
+body.addEventListener('keyup', function () {
     if (swap.length === 0 || swap.length === 1) {
         return
     } else if ((swap[0].slice(0, 5) === 'Shift' && swap[1].slice(0, 3) === 'Alt') || (swap[1].slice(0, 5) === 'Shift' && swap[0].slice(0, 3) === 'Alt')) {
