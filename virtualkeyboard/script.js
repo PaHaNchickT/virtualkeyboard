@@ -350,3 +350,15 @@ body.addEventListener('keyup', function (event) {
     }
     console.log(event.code)
 })
+
+wrapper.querySelectorAll('.key').forEach(e => {
+    e.addEventListener('mouseover', function() {
+        e.style.backgroundColor = 'yellow'
+    })
+})
+
+wrapper.querySelectorAll('.key').forEach(e => {
+    e.addEventListener('mouseout', function() {
+        e.style.backgroundColor = 'black'
+    })
+})
