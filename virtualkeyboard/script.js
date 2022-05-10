@@ -34,6 +34,7 @@ if (lang === null || lang == 0) {
 }
 
 console.log(lang)
+console.log(localStorage.getItem('lang'))
 
 function keys_core() {
     if (lang === 'en') {
