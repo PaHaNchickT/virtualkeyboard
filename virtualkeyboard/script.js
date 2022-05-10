@@ -23,34 +23,53 @@ const wrapper = document.querySelector('.wrapper')
 const area = document.querySelector('textarea')
 area.focus()
 let isCaps = 0
-let lang
+let lang = localStorage.getItem('lang')
 
-if (lang === 0 || lang === undefined) {
+console.log(lang)
+
+if (lang === null) {
     lang = 'en'
 } else {
     lang = localStorage.getItem('lang')
 }
 
-console.log(lang)
-
-function keys_en_core() {
-    for (let ks in keys_en) {
-        if (ks[0] === '+' && ks.length === 2) {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
-        } else if (ks === 'ShiftL' || ks === 'ShiftR') {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
-        } else if (ks === 'Space') {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
-        } else if (ks === 'rAlt') {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Alt</div>`)
-        } else if (ks === 'rCtrl') {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Ctrl</div>`)
-        } else {
-            wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
+function keys_core() {
+    if (lang === 'en') {
+        for (let ks in keys_en) {
+            if (ks[0] === '+' && ks.length === 2) {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
+            } else if (ks === 'ShiftL' || ks === 'ShiftR') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
+            } else if (ks === 'Space') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
+            } else if (ks === 'rAlt') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Alt</div>`)
+            } else if (ks === 'rCtrl') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Ctrl</div>`)
+            } else {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
+            }
+        }
+    } else if (lang === 'ru') {
+        for (let ks in keys_ru) {
+            if (ks[0] === '+' && ks.length === 2) {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key n${ks[1]}'>${ks[1]}</div>`)
+            } else if (ks === 'ShiftL' || ks === 'ShiftR') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks} shift'>Shift</div>`)
+            } else if (ks === 'Space') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>`)
+            } else if (ks === 'rAlt') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Alt</div>`)
+            } else if (ks === 'rCtrl') {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>Ctrl</div>`)
+            } else {
+                wrapper.insertAdjacentHTML('beforeend', `<div class='key ${ks}'>${ks}</div>`)
+            }
         }
     }
 }
-keys_en_core()
+
+keys_core()
 
 //////////input field//////////
 
@@ -445,9 +464,11 @@ body.addEventListener('keyup', function () {
         if (lang === 'ru') {
             keys_en_swapping()
             lang = 'en'
+            localStorage.setItem('lang', 'en')
         } else {
             keys_ru_swapping()
             lang = 'ru'
+            localStorage.setItem('lang', 'ru')
         }
         console.log(lang)
     }
