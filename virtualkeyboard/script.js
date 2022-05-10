@@ -1,5 +1,5 @@
-import keys_en from '../keys_en.js';
-import keys_ru from '../keys_ru.js';
+import keys_en from './keys_en.js';
+import keys_ru from './keys_ru.js';
 
 /////////adding html structure//////////
 
