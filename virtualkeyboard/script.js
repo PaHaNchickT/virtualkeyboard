@@ -220,10 +220,17 @@ body.addEventListener('keydown', function (event) {
     } else if (event.code === 'Enter') {
         enter.style.backgroundColor = 'yellow'
     } else if (event.code === 'CapsLock') {
+        if (isCaps === 0) {
+            caps_up()
+        } else {
+            caps_down()
+        }
         capslock.style.backgroundColor = 'yellow'
     } else if (event.code === 'ShiftLeft') {
+        keys_en_shift()
         shift[0].style.backgroundColor = 'yellow'
     } else if (event.code === 'ShiftRight') {
+        keys_en_shift()
         shift[1].style.backgroundColor = 'yellow'
     } else if (event.code === 'ControlLeft') {
         ctrlL.style.backgroundColor = 'yellow'
@@ -293,8 +300,10 @@ body.addEventListener('keyup', function (event) {
     } else if (event.code === 'CapsLock') {
         capslock.style.backgroundColor = 'black'
     } else if (event.code === 'ShiftLeft') {
+        keys_en_unshift()
         shift[0].style.backgroundColor = 'black'
     } else if (event.code === 'ShiftRight') {
+        keys_en_unshift()
         shift[1].style.backgroundColor = 'black'
     } else if (event.code === 'ControlLeft') {
         ctrlL.style.backgroundColor = 'black'
