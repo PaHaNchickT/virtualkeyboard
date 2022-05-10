@@ -376,22 +376,29 @@ wrapper.querySelectorAll('.key').forEach(e => {
 
 let swap = []
 
-// function keys_ru_swapping() {
-//     wrapper.childNodes.forEach(e => {
-//         for (let keys in keys_ru) {
-//             if ((keys === e.textContent || keys[1] === e.textContent) && keys_en[keys] !== 'special') {
-//                 e.textContent = keys_en[keys]
-//             }
-//         }
-//     })
-// }
+function keys_ru_swapping() {
+    let i = 0
+    for (let keys in keys_ru) {
+        if (keys.length === 1) {
+            wrapper.childNodes[i].textContent = keys
+        }
+        i++
+    }
+}
+
+function keys_en_swapping() {
+    let i = 0
+    for (let keys in keys_en) {
+        if (keys.length === 1) {
+            wrapper.childNodes[i].textContent = keys
+        }
+        i++
+    }
+}
 
 body.addEventListener('keydown', function(event) {
     swap.push(event.code)
     console.log(swap)
-    // if (event.code.slice(0, 5) === 'Shift' && event.code.slice(0, 3) === 'Alt') {
-    //     console.log('YES')
-    // }
 })
 
 body.addEventListener('keyup', function() {
@@ -399,8 +406,10 @@ body.addEventListener('keyup', function() {
         return
     } else if ((swap[0].slice(0, 5) === 'Shift' && swap[1].slice(0, 3) === 'Alt') || (swap[1].slice(0, 5) === 'Shift' && swap[0].slice(0, 3) === 'Alt')) {
         if (lang === 'ru') {
+            keys_en_swapping()
             lang = 'en'
         } else {
+            keys_ru_swapping()
             lang = 'ru'
         }
         console.log(lang)
