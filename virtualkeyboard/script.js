@@ -27,11 +27,13 @@ let lang = localStorage.getItem('lang')
 
 console.log(lang)
 
-if (lang === null || lang === 0) {
+if (lang === null || lang == 0) {
     lang = 'en'
 } else {
     lang = localStorage.getItem('lang')
 }
+
+console.log(lang)
 
 function keys_core() {
     if (lang === 'en') {
